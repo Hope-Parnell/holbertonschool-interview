@@ -21,15 +21,17 @@ def canUnlockAll(boxes):
     n = len(boxes)
     # Open box 0
     opened = [0]
-    boxKeysFound = []
+    usableKeys = []
     for key in boxes[0]:
-        if key < n and key not in boxKeysFound and key not in opened:
-            boxKeysFound.append(key)
-    while (len(boxKeysFound) != 0):
-        currentBox = boxKeysFound.pop(0)
+        if key < n and key not in usableKeys and key not in opened:
+            usableKeys.append(key)
+    while (len(usableKeys) != 0):
+        currentBox = usableKeys.pop(0)
         # open box with key
         opened.append(currentBox)
+        if len(opened) == n:
+            return True
         for key in boxes[currentBox]:
-            if key < n and key not in boxKeysFound and key not in opened:
-                boxKeysFound.append(key)
-    return len(opened) == n
+            if key < n and key not in usableKeys and key not in opened:
+                usableKeys.append(key)
+    return False
