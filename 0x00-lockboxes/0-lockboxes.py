@@ -26,10 +26,11 @@ def canUnlockAll(boxes):
         if key < n and key not in usableKeys and key not in opened:
             usableKeys.append(key)
     while (len(usableKeys) != 0):
+        # All boxes are opened or have keys
         if (len(opened)+len(usableKeys) == n):
             return True
-        currentBox = usableKeys.pop(0)
         # open box with key
+        currentBox = usableKeys.pop(0)
         opened.append(currentBox)
         for key in boxes[currentBox]:
             if key < n and key not in usableKeys and key not in opened:
