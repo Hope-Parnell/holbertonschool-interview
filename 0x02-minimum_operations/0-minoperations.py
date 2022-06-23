@@ -23,6 +23,8 @@ def minOperations(n):
     if (n < end):
         end = int(n)
     for factor in range(3, end + 1, 2):
+        if (n == 1):
+            break
         while (n % factor == 0):
             operations += factor
             n = n / factor
