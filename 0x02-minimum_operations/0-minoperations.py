@@ -23,7 +23,9 @@ def minOperations(n):
     if (end < 3 or n < end):
         end = int(n)
     for factor in range(3, end + 1, 2):
-        if (n == 1):
+        if (n < factor):
+            if (n != 1):
+                operations += n
             break
         while (n % factor == 0):
             operations += factor
