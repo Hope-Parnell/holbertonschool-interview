@@ -30,4 +30,4 @@ def minOperations(n):
         while (n % factor == 0):
             operations += factor
             n = n / factor
-    return operations if operations > 0 else n
+    return int(operations if operations > 0 else n)
