@@ -16,13 +16,10 @@ def minOperations(n):
         return 0
 
     operations = 0
-    end = int(sqrt(n))
     while (n % 2 == 0):
         operations += 2
         n /= 2
-    if (end < 3 or n < end):
-        end = int(n)
-    for factor in range(3, end + 1, 2):
+    for factor in range(3, int(n) + 1, 2):
         if (n < factor):
             if (n != 1):
                 operations += n
