@@ -20,7 +20,7 @@ def minOperations(n):
     while (n % 2 == 0):
         operations += 2
         n /= 2
-    if (n < end):
+    if (end < 3 or n < end):
         end = int(n)
     for factor in range(3, end + 1, 2):
         if (n == 1):
@@ -28,4 +28,4 @@ def minOperations(n):
         while (n % factor == 0):
             operations += factor
             n = n / factor
-    return operations if operations > 0 else n
+    return operations
