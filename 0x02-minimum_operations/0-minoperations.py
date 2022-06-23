@@ -12,7 +12,7 @@ def minOperations(n):
     """
     Finds the min number of Copy All and Pastes needed to have n H characters
     """
-    if (n < 2):
+    if (n < 2 or type(n) is not int):
         return 0
 
     operations = 0
