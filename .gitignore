@@ -152,4 +152,9 @@ cython_debug/
 #.idea/
 
 # main files for testing
-*-main.py
+**-main.py
+**-main.c
+**.out
+
+#VSCode Settings
+.vscode/
