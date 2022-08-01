@@ -1,5 +1,4 @@
 #include "palindrome.h"
-#include <stdio.h>
 
 /**
  * is_palindrome - checks if a unsined long int is a palindrome
