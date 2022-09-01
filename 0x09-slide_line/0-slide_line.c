@@ -1,20 +1,77 @@
 #include "slide_line.h"
 #include <stdio.h>
 /**
- * merge - merges a line
- * @line: line to merge
- * @start: index to start the merge
- * @end: index to end the merge
- * @d: direction to merge
+ * slideLeft - slides a line to the left
+ * @line: line to slide
+ * @size: length of the line
  */
-void merge(int *line, int start, int end, int d)
+void slideLeft(int *line, int size)
 {
-	int i;
+	int seek, firstZero = -1, end = size - 1, i;
 
-	line[start - d] += line[start];
-	for (i = start; i != end; i += d)
-		line[i] = line[i + d];
-	line[i] = 0;
+	/*move 0s to the right*/
+	for (seek = 0; seek < size; seek++)
+	{
+		if (line[seek] == 0)
+		{
+			if (firstZero == -1)
+				firstZero = seek;
+			end = firstZero;
+			while (line[seek] == 0 && seek < size)
+				seek++;
+			if (seek < size)
+			{
+				line[firstZero++] = line[seek];
+				line[seek] = 0;
+			}
+		}
+	}
+	for (seek = 0; seek < end; seek++)
+	{
+		if(line[seek] == line[seek + 1])
+		{
+			line[seek] *= 2;
+			for (i = seek + 1; i < end; i++)
+				line[i] = line[i + 1];
+			line[end--] = 0;
+		}
+	}
+}
+/**
+ * slideRight - slides a line to the right
+ * @line: line to slide
+ * @size: length of the line
+ */
+void slideRight(int *line, int size){
+	int seek, firstZero = -1, end = 0, i;
+
+	/*move 0s to the left*/
+	for (seek = size - 1; seek >= 0; seek--)
+	{
+		if (line[seek] == 0)
+		{
+			if (firstZero == -1)
+				firstZero = seek;
+			end = firstZero;
+			while (line[seek] == 0 && seek >= 0)
+				seek--;
+			if (seek >= 0)
+			{
+				line[firstZero--] = line[seek];
+				line[seek] = 0;
+			}
+		}
+	}
+	for (seek = size - 1; seek > end; seek--)
+	{
+		if(line[seek] == line[seek - 1])
+		{
+			line[seek] *= 2;
+			for (i = seek - 1; i > end; i--)
+				line[i] = line[i - 1];
+			line[end++] = 0;
+		}
+	}
 }
 /**
  * slide_line - slides a 2048 line left or right
@@ -26,31 +83,11 @@ void merge(int *line, int start, int end, int d)
  */
 int slide_line(int *line, size_t size, int direction)
 {
-	int start = direction == SLIDE_LEFT ? size - 1 : 0;
-	int end = direction == SLIDE_LEFT ? 0 : size - 1;
-	int i;
-
 	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
 		return (CANNOT_SLIDE);
-	for (i = start; i != end; i += direction)
-	{
-		while (line[i + direction] == 0)
-		{
-			merge(line, i, start, -direction);
-			i--;
-		}
-		if (line[i] == line[i + direction])
-		{
-			merge(line, i, start, -direction);
-			i += direction;
-			if (i == end)
-				break;
-		}
-		while (line[i + direction] == 0)
-		{
-			merge(line, i, start, -direction);
-			i--;
-		}
-	}
+	if (direction == SLIDE_LEFT)
+		slideLeft(line, size);
+	else
+		slideRight(line, size);
 	return (DONE);
 }
