@@ -28,7 +28,7 @@ void slideLeft(int *line, int size)
 	}
 	for (seek = 0; seek < end; seek++)
 	{
-		if(line[seek] == line[seek + 1])
+		if (line[seek] == line[seek + 1])
 		{
 			line[seek] *= 2;
 			for (i = seek + 1; i < end; i++)
@@ -42,7 +42,8 @@ void slideLeft(int *line, int size)
  * @line: line to slide
  * @size: length of the line
  */
-void slideRight(int *line, int size){
+void slideRight(int *line, int size)
+{
 	int seek, firstZero = -1, end = 0, i;
 
 	/*move 0s to the left*/
@@ -64,7 +65,7 @@ void slideRight(int *line, int size){
 	}
 	for (seek = size - 1; seek > end; seek--)
 	{
-		if(line[seek] == line[seek - 1])
+		if (line[seek] == line[seek - 1])
 		{
 			line[seek] *= 2;
 			for (i = seek - 1; i > end; i--)
