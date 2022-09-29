@@ -5,6 +5,7 @@ unit width 1, as if viewing the cross-section of a relief map, calculate how
 many square units of water will be retained after it rains.
 """
 
+
 def rain(walls):
     """
     Calculates the amount of rain a set of walls can hold
@@ -36,7 +37,7 @@ def rain(walls):
                 leftMax = walls[i]
             left[i] = leftMax
             if walls[size - i - 1] > rightMax:
-                rightMax = walls[size -i - 1]
+                rightMax = walls[size - i - 1]
             right[size - i - 1] = rightMax
         for i in range(0, size):
             rainVol += min(left[i], right[i]) - walls[i]
