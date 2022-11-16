@@ -11,8 +11,7 @@ def makeChange(coins, total):
         return 0
     coinsNeeded = 0
     coins.sort(reverse=True)
-    uniqueCoins = set(coins)
-    for coin in uniqueCoins:
+    for coin in coins:
         coinsNeeded += total // coin
         total %= coin
     return coinsNeeded if total == 0 else -1
