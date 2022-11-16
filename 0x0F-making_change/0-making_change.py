@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """given a list of coins make change for a given amont"""
 
+
 def makeChange(coins, total):
     """Return the minuimun number of coins needed to make change"""
     if (total <= 0):
@@ -8,6 +9,6 @@ def makeChange(coins, total):
     coinsNeeded = int(0)
     coins.sort(reverse=True)
     for coin in coins:
-        coinsNeeded = int(coinsNeeded + total / coin)
-        total = total % coin
+        coinsNeeded += total // coin
+        total %= coin
     return coinsNeeded if total == 0 else -1
