@@ -7,7 +7,7 @@ from audioop import reverse
 
 def makeChange(coins, total):
     """Return the minuimun number of coins needed to make change"""
-    if (total <= 0):
+    if total <= 0:
         return 0
     coinsNeeded = 0
     coins.sort(reverse=True)
