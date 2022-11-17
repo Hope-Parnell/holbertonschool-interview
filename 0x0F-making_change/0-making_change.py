@@ -14,4 +14,6 @@ def makeChange(coins, total):
     for coin in coins:
         coinsNeeded += total // coin
         total %= coin
+        if total == 0:
+            break
     return coinsNeeded if total == 0 else -1
