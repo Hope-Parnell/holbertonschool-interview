@@ -2,9 +2,6 @@
 """given a list of coins make change for a given amont"""
 
 
-from audioop import reverse
-
-
 def makeChange(coins, total):
     """Return the minuimun number of coins needed to make change"""
     if total <= 0:
