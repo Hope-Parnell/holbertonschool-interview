@@ -12,6 +12,8 @@ def island_perimeter(grid):
     for x in range(height):
         for y in range(width):
             if grid[x][y]:
+                # only count lefts and tops
+                # as tops = bottoms and lefts = rights
                 if not x or not grid[x - 1][y]:
                     perimeter += 1
                 if not y or not grid[x][y - 1]:
