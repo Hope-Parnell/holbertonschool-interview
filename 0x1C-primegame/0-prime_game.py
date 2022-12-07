@@ -7,7 +7,7 @@ def isWinner(x, nums):
     if not nums or x < 1 or len(nums) < x:
         return None
     n = max(nums)
-    isPrime =[False, False] + [True for i in range(2, n + 1)]
+    isPrime = [False, False] + [True for i in range(2, n + 1)]
     for i in range(2, int(n**0.5) + 1):
         if isPrime[i]:
             for j in range(i * i, n + 1, i):
