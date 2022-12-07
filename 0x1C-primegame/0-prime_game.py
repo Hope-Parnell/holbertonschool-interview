@@ -17,4 +17,4 @@ def isWinner(x, nums):
     for i in range(x):
         numberPrimes = list.count(isPrime[0:(nums[i] + 1)], True)
         maria += numberPrimes % 2
-    return None if maria == x else "Maria" if maria * 2 > x else "Ben"
+    return None if maria * 2 == x else "Maria" if maria * 2 > x else "Ben"
